@@ -1,2 +1,11 @@
 <div id="map"></div>
 <div>{{ lat }} {{ lng }}</div>
+<ag-grid-angular
+  style="width: 500px; height: 500px;"
+  class="ag-theme-alpine"
+  [rowData]="rowData | async"
+  [columnDefs]="columnDefs"
+  (gridReady)="onGridReady($event)"
+  >
+</ag-grid-angular>
+<button (click)="onBtnExport()">Download CSV export file</button>

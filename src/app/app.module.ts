@@ -5,12 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CdsModule } from '@cds/angular';
 import { ClarityModule } from '@clr/angular';
+import { AgGridModule } from 'ag-grid-angular';
 import { MapComponent } from './components/map/map.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, MapComponent],
-  imports: [BrowserModule, AppRoutingModule, ClarityModule, CdsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ClarityModule,
+    CdsModule,
+    AgGridModule,
+    HttpClientModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
