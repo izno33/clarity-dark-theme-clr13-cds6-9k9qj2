@@ -1,8 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ColDef, GridApi, GridReadyEvent } from 'ag-grid-community';
-import { DomEvent, tileLayer, map, Map } from 'leaflet';
+import {
+  DomEvent,
+  tileLayer,
+  map,
+  Map,
+  CRS,
+  LatLngTuple,
+  imageOverlay,
+  geoJSON,
+} from 'leaflet';
 import { Observable } from 'rxjs';
+import { MapService } from 'src/app/services/map.service';
 
 @Component({
   selector: 'app-map',
@@ -13,15 +22,6 @@ export class MapComponent implements OnInit {
   public map!: Map;
   public lat: number = 0;
   public lng: number = 0;
-  private gridApi!: GridApi;
-
-  columnDefs: ColDef[] = [
-    { field: 'id' },
-    { field: 'title' },
-    { field: 'description', editable: true },
-  ];
-
-  rowData!: Observable<any[]>;
 
   // rowData = [
   //   { make: 'Toyota', model: 'Celica', price: 35000 },
@@ -29,30 +29,40 @@ export class MapComponent implements OnInit {
   //   { make: 'Porsche', model: 'Boxter', price: 72000 },
   // ];
 
-  constructor(private http: HttpClient) {}
+  constructor(private mapService: MapService) {}
 
-  ngOnInit(): void {
-    this.rowData = this.http.get<any[]>('https://dev.rsv.clcg.fr/facesnaps');
-  }
+  ngOnInit(): void {}
 
   private initMap(): void {
     this.map = map('map', {
-      center: [44.84, -0.64],
-      zoom: 15,
+      crs: CRS.Simple,
+      center: [450, 635],
+      zoom: 1,
     });
 
-    const tiles = tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        maxZoom: 18,
-        minZoom: 3,
-        attribution:
-          '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      }
-    );
+    const bounds: LatLngTuple[] = [
+      [0, 0],
+      [676, 895],
+    ];
+    imageOverlay(
+      'https://86.ip-51-178-46.eu/origin_sector/Origin_Map.png',
+      bounds
+    ).addTo(this.map);
 
-    tiles.addTo(this.map);
+    // const tiles = tileLayer(
+    //   'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    //   {
+    //     maxZoom: 18,
+    //     minZoom: 3,
+    //     attribution:
+    //       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    //   }
+    // );
 
+    // tiles.addTo(this.map);
+
+    this.mapService.getZones().subscribe(data => geoJSON(data).addTo(this.map));
+    
     this.map.addEventListener('mousemove', (ev: any) => {
       this.lat = ev.latlng.lat;
       this.lng = ev.latlng.lng;
@@ -62,13 +72,5 @@ export class MapComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.initMap();
-  }
-
-  onGridReady(params: GridReadyEvent) {
-    this.gridApi = params.api;
-  }
-
-  onBtnExport() {
-    this.gridApi.exportDataAsCsv();
   }
 }
