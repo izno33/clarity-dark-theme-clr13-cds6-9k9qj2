@@ -10,7 +10,7 @@ export class MapService {
 
   getZones(): Observable<any> {
     return this.http.get<any>(
-      'https://86.ip-51-178-46.eu/origin_sector/zones.json'
+      'https://86.ip-51-178-46.eu/origin_sector/zones_full.json'
     );
   }
 }

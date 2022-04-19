@@ -7,9 +7,10 @@ import { CdsModule } from '@cds/angular';
 import { ClarityModule } from '@clr/angular';
 import { MapComponent } from './components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ZoneDetailComponent } from './components/zone-detail/zone-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent],
+  declarations: [AppComponent, MapComponent, ZoneDetailComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
