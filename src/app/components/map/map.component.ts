@@ -1,5 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import * as geojson from 'geojson';
 import {
   DomEvent,
   tileLayer,
@@ -9,6 +9,7 @@ import {
   LatLngTuple,
   imageOverlay,
   geoJSON,
+  LayerGroup,
 } from 'leaflet';
 import { Observable } from 'rxjs';
 import { MapService } from 'src/app/services/map.service';
@@ -61,8 +62,16 @@ export class MapComponent implements OnInit {
 
     // tiles.addTo(this.map);
 
-    this.mapService.getZones().subscribe(data => geoJSON(data).addTo(this.map));
-    
+    this.mapService.getZones().subscribe((data) =>
+      geoJSON(data)
+        .bindPopup((layer) => {
+          const feature = (layer as LayerGroup)?.feature as geojson.Feature;
+          console.log(feature);
+          return feature?.properties?.name ?? 'Inconnu';
+        })
+        .addTo(this.map)
+    );
+
     this.map.addEventListener('mousemove', (ev: any) => {
       this.lat = ev.latlng.lat;
       this.lng = ev.latlng.lng;
