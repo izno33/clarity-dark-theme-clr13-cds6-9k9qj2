@@ -1,6 +1,6 @@
 <div>
   <ul class="list-unstyled">
-    <li>Name: {{ zone.zone_name }}</li>
+    <li>Name: {{ zone.zone_name || '' }}</li>
     <li>Tier: {{ zone.zone_tier }}</li>
     <li>Clan: {{ zone.clan }}</li>
     <li>Particles: {{ zone.particles }}</li>
@@ -8,5 +8,6 @@
       Takeover: {{ zone.takeover_info.datetime.weekday }} at
       {{ zone.takeover_info.datetime.time }}
     </li>
+    <li>Controlled by {{ zone.controlledBy | uppercase }}</li>
   </ul>
 </div>

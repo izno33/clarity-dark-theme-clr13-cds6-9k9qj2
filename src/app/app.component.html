@@ -12,15 +12,11 @@
   </header>
   <div class="content-container">
     <div class="content-area">
-      <app-map></app-map>
-      <!-- <h3>Clarity Starter Instructions:</h3>
-      <ul>
-        <li>Start by clicking Fork in the toolbar above.</li>
-        <li>Implement the problem in the new editor.</li>
-        <li>
-          Save the result, and share the url in a GitHub or StackOverflow issue.
-        </li>
-      </ul> -->
+      <div class="map-area">
+        <app-map [detail]="mapDetail"></app-map>
+        <app-zone-detail #mapDetail></app-zone-detail>
+      </div>
+      <div></div>
     </div>
   </div>
 </div>

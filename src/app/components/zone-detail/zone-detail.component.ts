@@ -7,7 +7,14 @@ import { Zone } from 'src/app/models/zone.model';
   styleUrls: ['./zone-detail.component.scss'],
 })
 export class ZoneDetailComponent implements OnInit {
-  @Input() zone!: Zone;
+  @Input() zone: Zone = {
+    zone_name: 'None',
+    zone_tier: 0,
+    clan: 'None',
+    particles: [],
+    takeover_info: { datetime: { weekday: 'None', time: 'None' } },
+    controlledBy: 'None',
+  };
 
   constructor() {}
 

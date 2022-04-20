@@ -2,6 +2,7 @@ import {
   Component,
   ComponentFactoryResolver,
   Injector,
+  Input,
   OnInit,
 } from '@angular/core';
 import * as geojson from 'geojson';
@@ -27,6 +28,7 @@ export class MapComponent implements OnInit {
   public map!: Map;
   public lat: number = 0;
   public lng: number = 0;
+  @Input() public detail!: ZoneDetailComponent;
 
   constructor(
     private mapService: MapService,
@@ -48,8 +50,9 @@ export class MapComponent implements OnInit {
       zoom: 0,
       minZoom: 0,
       maxZoom: 0,
-      maxBounds: bounds,
-      maxBoundsViscosity: 1,
+      // maxBounds: bounds,
+      // maxBoundsViscosity: 1,
+      dragging: false,
     });
 
     imageOverlay(
@@ -58,15 +61,23 @@ export class MapComponent implements OnInit {
     ).addTo(this.map);
 
     this.mapService.getZones().subscribe((data) =>
-      geoJSON(data)
+      geoJSON(data, {
+        style: (feature) => ({
+          className: feature?.properties?.controlledBy ?? 'neutral',
+        }),
+      })
         .bindPopup((layer) => {
-          const component = this.resolver
-            .resolveComponentFactory(ZoneDetailComponent)
-            .create(this.injector);
+          const component = this.detail;
+          // const component = this.resolver
+          //   .resolveComponentFactory(ZoneDetailComponent)
+          //   .create(this.injector);
           const feature = (layer as LayerGroup)?.feature as geojson.Feature;
-          component.instance.zone = feature.properties as Zone;
-          component.changeDetectorRef.detectChanges();
-          return component.location.nativeElement;
+          component.zone = feature.properties as Zone;
+          // component.changeDetectorRef.detectChanges();
+          return 'Détails à droite';
+          // component.instance.zone = feature.properties as Zone;
+          // component.changeDetectorRef.detectChanges();
+          // return component.location.nativeElement;
         })
         .addTo(this.map)
     );

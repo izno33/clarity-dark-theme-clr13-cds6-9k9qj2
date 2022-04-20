@@ -4,4 +4,5 @@ export class Zone {
   clan!: string;
   particles!: string[];
   takeover_info!: any;
+  controlledBy!: string;
 }
