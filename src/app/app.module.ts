@@ -8,9 +8,10 @@ import { ClarityModule } from '@clr/angular';
 import { MapComponent } from './components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ZoneDetailComponent } from './components/zone-detail/zone-detail.component';
+import { LogComponent } from './components/log/log.component';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent, ZoneDetailComponent],
+  declarations: [AppComponent, MapComponent, ZoneDetailComponent, LogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
