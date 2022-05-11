@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Papa } from 'ngx-papaparse';
 
 @Component({
   selector: 'app-log',
@@ -7,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LogComponent implements OnInit {
   file: any;
+  parseResult: string;
 
-  constructor() {}
+  constructor(private papa: Papa) {}
 
   ngOnInit(): void {}
 
@@ -17,9 +19,21 @@ export class LogComponent implements OnInit {
 
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
-      console.log(fileReader.result);
+      // console.log(fileReader.result);
       const list = (fileReader.result as string).split('\r\n\r\n');
-      list.forEach(console.log);
+      let i = 0;
+      list.forEach(file => {
+        console.log('file', ++i);
+        this.papa.parse(file, {
+          step: (results, parser) => {
+            console.info('step', results);
+          },
+          complete: (results, file) => {
+            this.parseResult = results;
+            console.log('Result', results, file);
+          }
+        })
+      });
     };
     fileReader.readAsText(this.file);
   }
