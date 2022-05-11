@@ -1,6 +1,6 @@
       <div>
-        <textarea [(ngModel)]="parseResult">
-
-        </textarea>
+        <form clrForm>
+        <textarea clrTextarea name="result" [(ngModel)]="parseResult"></textarea>
+        </form>
         <input type='file' (change)="fileChanged($event)">
       </div>

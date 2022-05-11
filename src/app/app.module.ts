@@ -9,6 +9,7 @@ import { MapComponent } from './components/map/map.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ZoneDetailComponent } from './components/zone-detail/zone-detail.component';
 import { LogComponent } from './components/log/log.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, MapComponent, ZoneDetailComponent, LogComponent],
@@ -18,6 +19,7 @@ import { LogComponent } from './components/log/log.component';
     ClarityModule,
     CdsModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Papa } from 'ngx-papaparse';
 
 @Component({
@@ -8,7 +8,7 @@ import { Papa } from 'ngx-papaparse';
 })
 export class LogComponent implements OnInit {
   file: any;
-  parseResult: string;
+  @Input() parseResult: string = '';
 
   constructor(private papa: Papa) {}
 
@@ -29,7 +29,7 @@ export class LogComponent implements OnInit {
             console.info('step', results);
           },
           complete: (results, file) => {
-            this.parseResult = results;
+            this.parseResult = JSON.stringify(results);
             console.log('Result', results, file);
           }
         })

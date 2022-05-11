@@ -28,6 +28,7 @@
     "@types/leaflet": "^1.7.9",
     "leaflet": "^1.7.1",
     "mini-css-extract-plugin": "^1.6.0",
+    "ngx-papaparse": "^5.1.0",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.1.0",
