@@ -1,0 +1,31 @@
+export class LogFleet {
+  FleetType!: string;
+  Attack!: number;
+  Defense!: number;
+  Health!: number;
+  ShipAbility!: string;
+  CaptainManeuver!: string;
+  OfficerOneAbility!: string;
+  OfficerTwoAbility!: string;
+  OfficerThreeAbility!: string;
+  OfficerAttackBonus!: number;
+  DamagePerRound!: number;
+  ArmourPierce!: number;
+  ShieldPierce!: number;
+  Accuracy!: number;
+  CriticalChance!: number;
+  CriticalDamage!: number;
+  OfficerDefenseBonus!: number;
+  Armour!: number;
+  ShieldDeflection!: number;
+  Dodge!: number;
+  OfficerHealthBonus!: number;
+  ShieldHealth!: number;
+  HullHealth!: number;
+  ImpulseSpeed!: number;
+  WarpRange!: number;
+  WarpSpeed!: number;
+  CargoCapacity!: number;
+  ProtectedCargo!: number;
+  MiningBonus!: number;
+}

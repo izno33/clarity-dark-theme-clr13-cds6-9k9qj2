@@ -1,6 +1,7 @@
-      <div>
-        <form clrForm>
-        <textarea clrTextarea name="result" [(ngModel)]="parseResult"></textarea>
-        </form>
-        <input type='file' (change)="fileChanged($event)">
-      </div>
+<div>
+  <!-- <form clrForm>
+    <textarea clrTextarea name="result" [(ngModel)]="parseResult"></textarea>
+  </form> -->
+  <input type="file" (change)="fileChanged($event)" />
+  <pre>{{ parseResult | json }}</pre>
+</div>
