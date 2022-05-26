@@ -3,5 +3,21 @@
     <textarea clrTextarea name="result" [(ngModel)]="parseResult"></textarea>
   </form> -->
   <input type="file" (change)="fileChanged($event)" />
+  <clr-datagrid>
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Level</clr-dg-column>
+    <clr-dg-column>Outcome</clr-dg-column>
+    <clr-dg-column>Date</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let item of summary.items">
+      <clr-dg-cell>{{ item.PlayerName }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.PlayerLevel }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Outcome }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Timestamp | date }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ summary.items.length }} lines</clr-dg-footer>
+  </clr-datagrid>
+
   <pre>{{ parseResult | json }}</pre>
 </div>

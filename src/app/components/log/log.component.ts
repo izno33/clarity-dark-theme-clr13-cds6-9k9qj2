@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Papa } from 'ngx-papaparse';
+import { LogEvent } from 'src/app/models/log-event.model';
+import { LogFleet } from 'src/app/models/log-fleet.model';
+import { LogReward } from 'src/app/models/log-reward.model';
+import { LogSummary } from 'src/app/models/log-summary.model';
 
 @Component({
   selector: 'app-log',
@@ -9,6 +13,9 @@ import { Papa } from 'ngx-papaparse';
 export class LogComponent implements OnInit {
   file: any;
   @Input() parseResult: any[] = [];
+  summary!: LogSummary;
+  stepList = [LogSummary, LogReward, LogFleet, LogEvent];
+  step: any;
 
   constructor(private papa: Papa) {}
 
@@ -25,6 +32,7 @@ export class LogComponent implements OnInit {
       this.parseResult = [];
       list.forEach((file) => {
         console.log('file', ++i);
+        this.step = this.stepList[i];
         this.papa.parse(file, {
           skipEmptyLines: true,
           // step: (results, parser) => {
@@ -35,6 +43,9 @@ export class LogComponent implements OnInit {
             this.parseResult.push(results);
             // this.parseResult = JSON.stringify(results, [2]);
             console.log('Result', results, file);
+
+            const headers = results.data.shift();
+            results.data.forEach((line:any[]) => this.step.add(line));
           },
         });
       });
