@@ -4,6 +4,10 @@ import { LogEvent } from 'src/app/models/log-event.model';
 import { LogFleet } from 'src/app/models/log-fleet.model';
 import { LogReward } from 'src/app/models/log-reward.model';
 import { LogSummary } from 'src/app/models/log-summary.model';
+import '@cds/core/icon/register.js';
+import { ClarityIcons, checkCircleIcon } from '@cds/core/icon';
+
+ClarityIcons.addIcons(checkCircleIcon);
 
 @Component({
   selector: 'app-log',
@@ -13,8 +17,11 @@ import { LogSummary } from 'src/app/models/log-summary.model';
 export class LogComponent implements OnInit {
   file: any;
   @Input() parseResult: any[] = [];
-  summary!: LogSummary;
-  stepList = [LogSummary, LogReward, LogFleet, LogEvent];
+  summary: LogSummary = new LogSummary();
+  reward: LogReward = new LogReward();
+  fleet: LogFleet = new LogFleet();
+  event: LogEvent = new LogEvent();
+  stepList = [this.summary, this.reward, this.fleet, this.event];
   step: any;
 
   constructor(private papa: Papa) {}
@@ -31,8 +38,10 @@ export class LogComponent implements OnInit {
       let i = 0;
       this.parseResult = [];
       list.forEach((file) => {
-        console.log('file', ++i);
-        this.step = this.stepList[i];
+        this.step = this.stepList[i++];
+        this.step.items = [];
+        // this.step.clear(); // TODO
+        console.log('file', i);
         this.papa.parse(file, {
           skipEmptyLines: true,
           // step: (results, parser) => {
@@ -45,7 +54,7 @@ export class LogComponent implements OnInit {
             console.log('Result', results, file);
 
             const headers = results.data.shift();
-            results.data.forEach((line:any[]) => this.step.add(line));
+            results.data.forEach((line: any[]) => this.step.add(line));
           },
         });
       });
