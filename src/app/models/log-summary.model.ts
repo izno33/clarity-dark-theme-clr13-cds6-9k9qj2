@@ -1,4 +1,6 @@
-export class LogSummary {
+import { LogItem } from './log-item.model';
+
+export class LogSummary extends LogItem {
   PlayerName!: string;
   PlayerLevel!: number;
   Outcome!: string;
@@ -16,7 +18,7 @@ export class LogSummary {
   Location!: string;
   Timestamp!: Date;
 
-  private headers = [
+  headers = [
     'PlayerName',
     'PlayerLevel',
     'Outcome',
@@ -33,18 +35,9 @@ export class LogSummary {
     'ShieldHealthRemaining',
     'Location',
     'Timestamp',
-  ]
-  items: LogSummary[] = [];
-  itemSize = 16;
+  ];
 
-  add(data: any[]) {
-    const l = data.length;
-    if (l === this.itemSize) {
-      const summary = Object.fromEntries(this.headers.map((_, i) => [this.headers[i], data[i]]));
-      // const summary = Object.assign(...this.headers.map((k, i) => ({[k]: data[i]})));
-      this.items.push(summary as LogSummary)
-    } else {
-      console.error("Mauvaise taille d'élément", data);
-    }
+  fix(data: any[]): void {
+    console.log('Summary: No fix yet!');
   }
 }

@@ -1,4 +1,6 @@
-export class LogFleet {
+import { LogItem } from './log-item.model';
+
+export class LogFleet extends LogItem {
   FleetType!: string;
   Attack!: number;
   Defense!: number;
@@ -29,7 +31,7 @@ export class LogFleet {
   ProtectedCargo!: number;
   MiningBonus!: number;
 
-  private headers = [
+  headers = [
     'FleetType',
     'Attack',
     'Defense',
@@ -60,26 +62,9 @@ export class LogFleet {
     'ProtectedCargo',
     'MiningBonus',
   ];
-  items: LogFleet[] = [];
-  itemSize = 29;
-
-  add(data: any[]) {
-    this.fix(data);
-    const l = data.length;
-    if (l === this.itemSize) {
-      const summary = Object.fromEntries(
-        this.headers.map((_, i) => [this.headers[i], data[i]])
-      );
-      // const summary = Object.assign(...this.headers.map((k, i) => ({[k]: data[i]})));
-      this.items.push(summary as LogFleet);
-    } else {
-      console.error("Mauvaise taille d'élément", data);
-      this.fix(data);
-      console.warn(data);
-    }
-  }
 
   fix(data: any[]) {
+    console.log('fix fleet');
     if (data.length === 31) {
       this.decimalize(data, 14);
       this.decimalize(data, 15);
@@ -92,10 +77,5 @@ export class LogFleet {
       this.decimalize(data, 20);
       this.decimalize(data, 25);
     }
-  }
-
-  decimalize(data: any[], position: number) {
-    const value = data.slice(position, position + 2).join('.');
-    data.splice(position, 2, +value);
   }
 }

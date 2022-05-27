@@ -6,8 +6,11 @@ import { LogReward } from 'src/app/models/log-reward.model';
 import { LogSummary } from 'src/app/models/log-summary.model';
 import '@cds/core/icon/register.js';
 import { ClarityIcons, checkCircleIcon } from '@cds/core/icon';
+import { BattleLog } from 'src/app/models/battle-log.model';
+import { LogItem } from 'src/app/models/log-item.model';
+import { circleIcon } from '@cds/core/icon/shapes/circle';
 
-ClarityIcons.addIcons(checkCircleIcon);
+ClarityIcons.addIcons(checkCircleIcon, circleIcon);
 
 @Component({
   selector: 'app-log',
@@ -17,12 +20,12 @@ ClarityIcons.addIcons(checkCircleIcon);
 export class LogComponent implements OnInit {
   file: any;
   @Input() parseResult: any[] = [];
-  summary: LogSummary = new LogSummary();
-  reward: LogReward = new LogReward();
-  fleet: LogFleet = new LogFleet();
-  event: LogEvent = new LogEvent();
+  summary = new BattleLog<LogSummary>(new LogSummary());
+  reward = new BattleLog<LogReward>(new LogReward());
+  fleet = new BattleLog<LogFleet>(new LogFleet());
+  event = new BattleLog<LogEvent>(new LogEvent());
   stepList = [this.summary, this.reward, this.fleet, this.event];
-  step: any;
+  step!: BattleLog<LogItem>;
 
   constructor(private papa: Papa) {}
 
@@ -33,10 +36,12 @@ export class LogComponent implements OnInit {
 
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
-      // console.log(fileReader.result);
-      const list = (fileReader.result as string).split('\r\n\r\n');
+      const list = (fileReader.result as string)
+        .split('\r\n\r\n')
+        .filter((value) => value.length > 0);
       let i = 0;
       this.parseResult = [];
+      console.log(list);
       list.forEach((file) => {
         this.step = this.stepList[i++];
         this.step.items = [];
@@ -44,17 +49,22 @@ export class LogComponent implements OnInit {
         console.log('file', i);
         this.papa.parse(file, {
           skipEmptyLines: true,
-          // step: (results, parser) => {
-          //   console.info('step', results);
-          //   console.info('parser', parser);
-          // },
           complete: (results, file) => {
             this.parseResult.push(results);
-            // this.parseResult = JSON.stringify(results, [2]);
             console.log('Result', results, file);
 
             const headers = results.data.shift();
-            results.data.forEach((line: any[]) => this.step.add(line));
+            if (this.step.check(headers)) {
+              results.data.forEach((line: any[]) => this.step.add(line));
+            } else {
+              console.warn(
+                'Wrong headers.',
+                'Expected',
+                this.step.headers,
+                'Provided',
+                headers
+              );
+            }
           },
         });
       });

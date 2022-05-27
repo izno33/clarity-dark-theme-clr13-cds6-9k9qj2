@@ -1,4 +1,6 @@
-export class LogEvent {
+import { LogItem } from './log-item.model';
+
+export class LogEvent extends LogItem {
   Round!: number;
   BattleEvent!: number;
   Type!: string;
@@ -23,7 +25,7 @@ export class LogEvent {
   TargetDestroyed!: string;
   ChargingWeapons!: string;
 
-  private headers = [
+  headers = [
     'Round',
     'BattleEvent',
     'Type',
@@ -48,8 +50,6 @@ export class LogEvent {
     'TargetDestroyed',
     'ChargingWeapons',
   ];
-  items: LogEvent[] = [];
-  itemSize = 23;
 
   get AttackerIsArmada(): boolean {
     return this._AttackerIsArmada;
@@ -66,17 +66,7 @@ export class LogEvent {
   set CriticalHit(value: 'YES' | 'NO' | '--' | boolean) {
     this._CriticalHit = value === 'YES' || value === true;
   }
-
-  add(data: any[]) {
-    const l = data.length;
-    if (l === this.itemSize) {
-      const summary = Object.fromEntries(
-        this.headers.map((_, i) => [this.headers[i], data[i]])
-      );
-      // const summary = Object.assign(...this.headers.map((k, i) => ({[k]: data[i]})));
-      this.items.push(summary as LogEvent);
-    } else {
-      console.error("Mauvaise taille d'élément", data);
-    }
+  fix(data: any[]): void {
+    console.log('Event: No fix yet!');
   }
 }
