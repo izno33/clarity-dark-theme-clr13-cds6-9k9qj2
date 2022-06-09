@@ -10,9 +10,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { ZoneDetailComponent } from './components/zone-detail/zone-detail.component';
 import { LogComponent } from './components/log/log.component';
 import { FormsModule } from '@angular/forms';
+import { FleetComponent } from './components/log/fleet/fleet.component';
+import { RewardComponent } from './components/log/reward/reward.component';
+import { SummaryComponent } from './components/log/summary/summary.component';
+import { EventComponent } from './components/log/event/event.component';
 
 @NgModule({
-  declarations: [AppComponent, MapComponent, ZoneDetailComponent, LogComponent],
+  declarations: [AppComponent, MapComponent, ZoneDetailComponent, LogComponent, FleetComponent, RewardComponent, SummaryComponent, EventComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

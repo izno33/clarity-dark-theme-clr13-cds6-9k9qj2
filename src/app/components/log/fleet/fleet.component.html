@@ -1,0 +1,67 @@
+  <clr-datagrid>
+    <clr-dg-placeholder>We couldn't find any item!</clr-dg-placeholder>
+
+    <clr-dg-column>FleetType</clr-dg-column>
+    <clr-dg-column>Attack</clr-dg-column>
+    <clr-dg-column>Defense</clr-dg-column>
+    <clr-dg-column>Health</clr-dg-column>
+    <clr-dg-column>ShipAbility</clr-dg-column>
+    <clr-dg-column>CaptainManeuver</clr-dg-column>
+    <clr-dg-column>OfficerOneAbility</clr-dg-column>
+    <clr-dg-column>OfficerTwoAbility</clr-dg-column>
+    <clr-dg-column>OfficerThreeAbility</clr-dg-column>
+    <clr-dg-column>OfficerAttackBonus</clr-dg-column>
+    <clr-dg-column>DamagePerRound</clr-dg-column>
+    <clr-dg-column>ArmourPierce</clr-dg-column>
+    <clr-dg-column>ShieldPierce</clr-dg-column>
+    <clr-dg-column>Accuracy</clr-dg-column>
+    <clr-dg-column>CriticalChance</clr-dg-column>
+    <clr-dg-column>CriticalDamage</clr-dg-column>
+    <clr-dg-column>OfficerDefenseBonus</clr-dg-column>
+    <clr-dg-column>Armour</clr-dg-column>
+    <clr-dg-column>ShieldDeflection</clr-dg-column>
+    <clr-dg-column>Dodge</clr-dg-column>
+    <clr-dg-column>OfficerHealthBonus</clr-dg-column>
+    <clr-dg-column>ShieldHealth</clr-dg-column>
+    <clr-dg-column>HullHealth</clr-dg-column>
+    <clr-dg-column>ImpulseSpeed</clr-dg-column>
+    <clr-dg-column>WarpRange</clr-dg-column>
+    <clr-dg-column>WarpSpeed</clr-dg-column>
+    <clr-dg-column>CargoCapacity</clr-dg-column>
+    <clr-dg-column>ProtectedCargo</clr-dg-column>
+    <clr-dg-column>MiningBonus</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let item of fleet.items">
+      <clr-dg-cell>{{ item.FleetType }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Attack }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Defense }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Health }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShipAbility }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.CaptainManeuver }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerOneAbility }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerTwoAbility }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerThreeAbility }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerAttackBonus | percent }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.DamagePerRound }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ArmourPierce }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShieldPierce }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Accuracy }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.CriticalChance | percent }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.CriticalDamage | percent }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerDefenseBonus | percent }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Armour }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShieldDeflection }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Dodge }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerHealthBonus | percent }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShieldHealth }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.HullHealth }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ImpulseSpeed }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.WarpRange }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.WarpSpeed }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.CargoCapacity }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ProtectedCargo }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.MiningBonus | percent }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ fleet.items.length }} lines</clr-dg-footer>
+  </clr-datagrid>

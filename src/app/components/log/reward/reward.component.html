@@ -1,0 +1,12 @@
+  <clr-datagrid>
+    <clr-dg-placeholder>We couldn't find any item!</clr-dg-placeholder>
+    <clr-dg-column>Reward Name</clr-dg-column>
+    <clr-dg-column>Count</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let item of reward.items">
+      <clr-dg-cell>{{ item.RewardName }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Count }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ reward.items.length }} lines</clr-dg-footer>
+  </clr-datagrid>

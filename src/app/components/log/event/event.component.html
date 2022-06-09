@@ -1,0 +1,141 @@
+  <clr-datagrid class="datagrid-compact">
+    <clr-dg-placeholder>We couldn't find any item!</clr-dg-placeholder>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        Round
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>Battle Event</clr-dg-column>
+    <clr-dg-column [clrDgField]="'Type'">Type</clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        AttackerName
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: true }">
+        AttackerAlliance
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column
+      ><ng-container *clrDgHideableColumn="{ hidden: true }">
+        AttackerShip
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        AttackerIsArmada
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        TargetName
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column
+      ><ng-container *clrDgHideableColumn="{ hidden: true }">
+        TargetAlliance
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: true }">
+        TargetShip
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        TargetIsArmada
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        CriticalHit
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column
+      ><ng-container *clrDgHideableColumn="{ hidden: false }">
+        HullDamage
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        ShieldDamage
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        MitigatedDamage
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        TotalDamage
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        AbilityType
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        AbilityValue
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        AbilityName
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        AbilityOwnerName
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        TargetDefeated
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        TargetDestroyed
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
+        ChargingWeapons
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-row *clrDgItems="let item of event.items">
+      <clr-dg-cell>{{ item.Round }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.BattleEvent }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Type }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.AttackerName }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.AttackerAlliance }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.AttackerShip }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.AttackerIsArmada }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.TargetName }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.TargetAlliance }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.TargetShip }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.TargetIsArmada }}</clr-dg-cell>
+      <clr-dg-cell>
+        <cds-icon *ngIf="item.CriticalHit" shape="check-circle"></cds-icon>
+        <ng-template *ngIf="!item.CriticalHit">--</ng-template>
+      </clr-dg-cell>
+      <!-- <clr-dg-cell>{{ item.CriticalHit }}</clr-dg-cell> -->
+      <clr-dg-cell>{{ item.HullDamage }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShieldDamage }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.MitigatedDamage }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.TotalDamage }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.AbilityType }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.AbilityValue }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.AbilityName }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.AbilityOwnerName }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.TargetDefeated }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.TargetDestroyed }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ChargingWeapons }}</clr-dg-cell>
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ event.items.length }} lines</clr-dg-footer>
+  </clr-datagrid>

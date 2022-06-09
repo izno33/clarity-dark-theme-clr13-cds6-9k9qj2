@@ -1,0 +1,42 @@
+  <clr-datagrid>
+    <clr-dg-placeholder>We couldn't find any item!</clr-dg-placeholder>
+
+    <clr-dg-column>Name</clr-dg-column>
+    <clr-dg-column>Level</clr-dg-column>
+    <clr-dg-column>Outcome</clr-dg-column>
+    <clr-dg-column>ShipName</clr-dg-column>
+    <clr-dg-column>ShipLevel</clr-dg-column>
+    <clr-dg-column>ShipStrength</clr-dg-column>
+    <clr-dg-column>ShipXP</clr-dg-column>
+    <clr-dg-column>OfficerOne</clr-dg-column>
+    <clr-dg-column>OfficerTwo</clr-dg-column>
+    <clr-dg-column>OfficerThree</clr-dg-column>
+    <clr-dg-column>HullHealth</clr-dg-column>
+    <clr-dg-column>HullHealthRemaining</clr-dg-column>
+    <clr-dg-column>ShieldHealth</clr-dg-column>
+    <clr-dg-column>ShieldHealthRemaining</clr-dg-column>
+    <clr-dg-column>Location</clr-dg-column>
+    <clr-dg-column>Date</clr-dg-column>
+
+    <clr-dg-row *clrDgItems="let item of summary.items">
+      <clr-dg-cell>{{ item.PlayerName }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.PlayerLevel }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Outcome }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShipName }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShipLevel }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShipStrength }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShipXP }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerOne }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerTwo }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.OfficerThree }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.HullHealth }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.HullHealthRemaining }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShieldHealth }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShieldHealthRemaining }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Location }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Timestamp }}</clr-dg-cell>
+      <!-- <clr-dg-cell>{{ item.Timestamp | date }}</clr-dg-cell> -->
+    </clr-dg-row>
+
+    <clr-dg-footer>{{ summary.items.length }} lines</clr-dg-footer>
+  </clr-datagrid>
