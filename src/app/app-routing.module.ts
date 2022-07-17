@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LogComponent } from './components/log/log.component';
-import { MapComponent } from './components/map/map.component';
 
 const routes: Routes = [
-  { path: 'map', component: MapComponent},
-  { path: 'logs', component: LogComponent},
+  { path: 'map', loadChildren: () => import('./territory-map/territory-map.module').then(m => m.TerritoryMapModule)},
+  { path: 'logs', loadChildren: () => import('./battle-log/battle-log.module').then(m => m.BattleLogModule) },
 ];
 
 @NgModule({
