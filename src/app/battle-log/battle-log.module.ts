@@ -8,10 +8,11 @@ import { FleetComponent } from './components/log/fleet/fleet.component';
 import { RewardComponent } from './components/log/reward/reward.component';
 import { SummaryComponent } from './components/log/summary/summary.component';
 import { EventComponent } from './components/log/event/event.component';
+import { YesNoComponent } from './components/yes-no/yes-no.component';
 
 
 @NgModule({
-  declarations: [LogComponent, FleetComponent, RewardComponent, SummaryComponent, EventComponent],
+  declarations: [LogComponent, FleetComponent, RewardComponent, SummaryComponent, EventComponent, YesNoComponent],
   imports: [
     CommonModule,
     BattleLogRoutingModule,

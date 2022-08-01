@@ -114,16 +114,18 @@
       <clr-dg-cell>{{ item.AttackerName }}</clr-dg-cell>
       <clr-dg-cell>{{ item.AttackerAlliance }}</clr-dg-cell>
       <clr-dg-cell>{{ item.AttackerShip }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.AttackerIsArmada }}</clr-dg-cell>
+      <clr-dg-cell>
+        <app-yes-no [value]="item.AttackerIsArmada"></app-yes-no>
+      </clr-dg-cell>
       <clr-dg-cell>{{ item.TargetName }}</clr-dg-cell>
       <clr-dg-cell>{{ item.TargetAlliance }}</clr-dg-cell>
       <clr-dg-cell>{{ item.TargetShip }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.TargetIsArmada }}</clr-dg-cell>
       <clr-dg-cell>
-        <cds-icon *ngIf="item.CriticalHit" shape="check-circle"></cds-icon>
-        <ng-template *ngIf="!item.CriticalHit">--</ng-template>
+        <app-yes-no [value]="item.TargetIsArmada"></app-yes-no>
       </clr-dg-cell>
-      <!-- <clr-dg-cell>{{ item.CriticalHit }}</clr-dg-cell> -->
+      <clr-dg-cell>
+        <app-yes-no [value]="item.CriticalHit"></app-yes-no>
+      </clr-dg-cell>
       <clr-dg-cell>{{ item.HullDamage }}</clr-dg-cell>
       <clr-dg-cell>{{ item.ShieldDamage }}</clr-dg-cell>
       <clr-dg-cell>{{ item.MitigatedDamage }}</clr-dg-cell>
