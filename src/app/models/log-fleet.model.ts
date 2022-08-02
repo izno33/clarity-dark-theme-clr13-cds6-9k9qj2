@@ -29,7 +29,7 @@ export class LogFleet extends LogItem {
   WarpSpeed!: number; // decimal
   CargoCapacity!: number;
   ProtectedCargo!: number;
-  MiningBonus!: number;
+  MiningBonus!: number; // decimal
 
   headers = [
     'FleetType',
@@ -64,17 +64,47 @@ export class LogFleet extends LogItem {
   ];
 
   fix(data: any[]) {
-    console.log('fix fleet');
-    if (data.length === 31) {
-      this.decimalize(data, 14);
-      this.decimalize(data, 15);
-    }
-    if (data.length === 35) {
+    this.fixStrings(data);
+
+    // Correction tous champs
+    if (data.length === 36) {
       this.decimalize(data, 9);
       this.decimalize(data, 14);
       this.decimalize(data, 15);
       this.decimalize(data, 16);
       this.decimalize(data, 20);
+      this.decimalize(data, 25);
+      this.decimalize(data, 28);
+    }
+    // Correction OfficerAttackBonus
+    if (data[10] < 100) {
+      this.decimalize(data, 9);
+    }
+
+    // Correction MiningBonus
+    if (data[-3] < 100) {
+      this.decimalize(data, -3);
+    }
+    if (data.length === 34) {
+      this.decimalize(data, 14);
+      this.decimalize(data, 15);
+      this.decimalize(data, 16);
+      this.decimalize(data, 20);
+      this.decimalize(data, 25);
+    }
+    if (data[15].length === 2) {
+      this.decimalize(data, 14);
+    }
+    if (data[16].length === 2) {
+      this.decimalize(data, 15);
+    }
+    if (data[17].length === 2) {
+      this.decimalize(data, 16);
+    }
+    if (data[17].length <= 2) {
+      this.decimalize(data, 14);
+    }
+    if (data[26].length === 2) {
       this.decimalize(data, 25);
     }
   }

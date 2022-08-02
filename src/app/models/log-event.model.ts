@@ -3,7 +3,7 @@ import { LogItem } from './log-item.model';
 export class LogEvent extends LogItem {
   Round!: number;
   BattleEvent!: number;
-  Type!: string;
+  Type!: string; // Officer Ability || Attack || Shield Depleted || Charging Weapons || Combatant Destroyed
   AttackerName!: string;
   AttackerAlliance!: string;
   AttackerShip!: string;
@@ -17,10 +17,10 @@ export class LogEvent extends LogItem {
   ShieldDamage!: number;
   MitigatedDamage!: number;
   TotalDamage!: number;
-  AbilityType!: string;
-  AbilityValue!: number;
-  AbilityName!: string;
-  AbilityOwnerName!: string;
+  AbilityType!: string; // OA
+  AbilityValue!: number; // decimal // OA
+  AbilityName!: string; // OA
+  AbilityOwnerName!: string; // OA
   TargetDefeated!: string;
   TargetDestroyed!: string;
   ChargingWeapons!: string;
@@ -52,6 +52,8 @@ export class LogEvent extends LogItem {
   ];
 
   fix(data: any[]): void {
-    console.log('Event: No fix yet!');
+    if (data.length === 24) {
+      this.decimalize(data, 17);
+    }
   }
 }
