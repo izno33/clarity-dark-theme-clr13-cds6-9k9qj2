@@ -3,23 +3,55 @@
     <textarea clrTextarea name="result" [(ngModel)]="parseResult"></textarea>
     </form> -->
     <input type="file" (change)="fileChanged($event)" />
-    <div class="clr-row">
-      <div class="clr-col-md-2">
-        <app-summary [summary]="summary"></app-summary>
-      </div>
 
-      <div class="clr-col-md-2">
-        <app-reward [reward]="reward"></app-reward>
-      </div>
+    <clr-tabs>
+      <clr-tab>
+        <button clrTabLink id="link1">Summary</button>
+        <clr-tab-content id="content1" *clrIfActive>
 
-      <div class="clr-col-md">
-        <app-fleet [fleet]="fleet"></app-fleet>
-      </div>
-    </div>
-    <div class="clr-row">
-      <div class="clr-col">
-        <app-event [event]="event"></app-event>
-      </div>
-    </div>
+          <div class="clr-row">
+            <div class="clr-col-md">
+              <app-summary [summary]="summary"></app-summary>
+            </div>
+          </div>
+          <!--
+        </clr-tab-content>
+      </clr-tab>
+
+      <clr-tab>
+        <button clrTabLink id="link2">Rewards</button>
+        <clr-tab-content id="content2" *clrIfActive>
+          -->
+          <div class="clr-row">
+            <div class="clr-col-md">
+              <app-reward [reward]="reward"></app-reward>
+            </div>
+          </div>
+          <!--
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink id="link3">Fleet</button>
+        <clr-tab-content id="content3" *clrIfActive>
+          -->
+          <div class="clr-row">
+
+            <div class="clr-col-md">
+              <app-fleet [fleet]="fleet"></app-fleet>
+            </div>
+          </div>
+        </clr-tab-content>
+      </clr-tab>
+      <clr-tab>
+        <button clrTabLink id="link4">Events</button>
+        <clr-tab-content id="content4" *clrIfActive>
+          <div class="clr-row">
+            <div class="clr-col">
+              <app-event [event]="event"></app-event>
+            </div>
+          </div>
+        </clr-tab-content>
+      </clr-tab>
+    </clr-tabs>
     <pre *ngIf="false">{{ parseResult | json }}</pre>
 </div>
