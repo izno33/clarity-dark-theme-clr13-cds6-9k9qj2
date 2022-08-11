@@ -40,9 +40,21 @@
         <clr-tab-content id="content3" *clrIfActive>
           -->
           <div class="clr-row">
-
             <div class="clr-col-md">
               <app-fleet [fleet]="fleet"></app-fleet>
+            </div>
+          </div>
+          <div class="clr-row">
+            <div class="clr-col-md">
+              <clr-datagrid>
+                <clr-dg-placeholder>We couldn't find any item!</clr-dg-placeholder>
+                <clr-dg-column>Ship</clr-dg-column>
+                <clr-dg-column>Mitigation</clr-dg-column>
+                <clr-dg-row *clrDgItems="let item of fleet.items">
+                  <clr-dg-cell>{{ item.FleetType }}</clr-dg-cell>
+                  <clr-dg-cell>{{ item.Attack }}</clr-dg-cell>
+                </clr-dg-row>
+              </clr-datagrid>
             </div>
           </div>
         </clr-tab-content>
