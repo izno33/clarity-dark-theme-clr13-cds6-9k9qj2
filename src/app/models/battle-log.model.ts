@@ -20,10 +20,10 @@ export class BattleLog<T extends LogItem> {
     this.item.fix(data);
     const l = data.length;
     if (l === this.headers.length) {
-      const summary = Object.fromEntries(
+      const item: T = Object.assign(Object.create(this.item), Object.fromEntries(
         this.headers.map((_, i) => [this.headers[i], data[i]])
-      );
-      this.items.push(summary as T);
+      ));
+      this.items.push(item);
     } else {
       console.error('Wrong item size', data);
     }
