@@ -1,6 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { registerLocaleData, CommonModule } from '@angular/common';
 import { ClarityModule } from '@clr/angular';
+import * as fr from '@angular/common/locales/fr';
+import * as en from '@angular/common/locales/en';
 
 import { BattleLogRoutingModule } from './battle-log-routing.module';
 import { LogComponent } from './components/log/log.component';
@@ -17,6 +19,13 @@ import { YesNoComponent } from './components/yes-no/yes-no.component';
     CommonModule,
     BattleLogRoutingModule,
     ClarityModule,
-  ]
+  ],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+  ],
 })
-export class BattleLogModule { }
+export class BattleLogModule {
+  constructor() {
+    registerLocaleData(fr.default);
+  }
+}
