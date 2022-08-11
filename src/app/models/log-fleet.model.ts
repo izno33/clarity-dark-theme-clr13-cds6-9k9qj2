@@ -61,6 +61,8 @@ export class LogFleet extends LogItem {
     'CargoCapacity',
     'ProtectedCargo',
     'MiningBonus',
+    'DebuffApplied',
+    'BuffApplied',
   ];
 
   fix(data: any[]) {
