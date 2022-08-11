@@ -74,6 +74,11 @@
     </clr-dg-column>
     <clr-dg-column>
       <ng-container *clrDgHideableColumn="{ hidden: false }">
+        ShieldMitigation
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
         AbilityType
       </ng-container>
     </clr-dg-column>
@@ -130,6 +135,7 @@
       <clr-dg-cell>{{ item.ShieldDamage }}</clr-dg-cell>
       <clr-dg-cell>{{ item.MitigatedDamage }}</clr-dg-cell>
       <clr-dg-cell>{{ item.TotalDamage }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShieldMitigation | percent:'1.0-2' }}</clr-dg-cell>
       <clr-dg-cell>{{ item.AbilityType }}</clr-dg-cell>
       <clr-dg-cell>{{ item.AbilityValue }}</clr-dg-cell>
       <clr-dg-cell>{{ item.AbilityName }}</clr-dg-cell>
