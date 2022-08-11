@@ -27,6 +27,13 @@ export class LogComponent implements OnInit {
   stepList = [this.summary, this.reward, this.fleet, this.event];
   step!: BattleLog<LogItem>;
 
+  coeficients = new Map<string, Array<number>>([
+    ["survey", [0.3, 0.3, 0.3]],
+    ["battleship", [0.55, 0.2, 0.2]],
+    ["explorer", [0.2, 0.55, 0.2]],
+    ["interceptor", [0.2, 0.2, 0.55]],
+  ]);
+
   constructor(private papa: Papa) {}
 
   ngOnInit(): void {}
