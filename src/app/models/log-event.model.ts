@@ -58,8 +58,6 @@ export class LogEvent extends LogItem {
   }
 
   public get ShieldMitigation(): number {
-    console.log (this.Type === "Attack");
-    console.log( this.ShieldDamage / (this.TotalDamage - this.MitigatedDamage) );
     return (this.Type === "Attack") ? this.ShieldDamage / (this.TotalDamage - this.MitigatedDamage) : 0;
   }
 }
