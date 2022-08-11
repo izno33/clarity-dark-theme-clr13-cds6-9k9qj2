@@ -104,6 +104,9 @@ export class LogFleet extends LogItem {
     if (data[17].length <= 2) {
       this.decimalize(data, 14);
     }
+    if (data[20].length > 2) {
+      this.decimalize(data, 15);
+    }
     if (data[26].length === 2) {
       this.decimalize(data, 25);
     }
