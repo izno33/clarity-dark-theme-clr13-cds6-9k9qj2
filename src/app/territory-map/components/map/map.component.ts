@@ -2,8 +2,8 @@ import {
   Component,
   ComponentFactoryResolver,
   Injector,
-  Input,
   OnInit,
+  ViewChild,
 } from '@angular/core';
 import * as geojson from 'geojson';
 import {
@@ -28,7 +28,7 @@ export class MapComponent implements OnInit {
   public map!: Map;
   public lat: number = 0;
   public lng: number = 0;
-  @Input() public detail!: ZoneDetailComponent;
+  @ViewChild('mapDetail') public detail!: ZoneDetailComponent;
 
   constructor(
     private mapService: MapService,
