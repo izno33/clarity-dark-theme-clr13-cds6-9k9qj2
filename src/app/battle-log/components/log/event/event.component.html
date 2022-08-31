@@ -7,7 +7,7 @@
     </clr-dg-column>
     <clr-dg-column>Battle Event</clr-dg-column>
     <clr-dg-column [clrDgField]="'Type'">Type</clr-dg-column>
-    <clr-dg-column>
+    <clr-dg-column [clrDgField]="'AttackerName'">
       <ng-container *clrDgHideableColumn="{ hidden: false }">
         AttackerName
       </ng-container>
@@ -27,7 +27,7 @@
         AttackerIsArmada
       </ng-container>
     </clr-dg-column>
-    <clr-dg-column>
+    <clr-dg-column [clrDgField]="'TargetName'">
       <ng-container *clrDgHideableColumn="{ hidden: false }">
         TargetName
       </ng-container>
