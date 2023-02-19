@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { LogItem } from './log-item.model';
 
 export class BattleLog<T extends LogItem> {
@@ -5,6 +6,7 @@ export class BattleLog<T extends LogItem> {
   itemSize!: number;
   items: T[] = [];
   item: T;
+  needRefresh$ = new Subject<boolean>();
 
   constructor(item: T) {
     this.item = item;
@@ -36,5 +38,10 @@ export class BattleLog<T extends LogItem> {
 
   clear(): void {
     this.items.length = 0
+  }
+
+  refresh(): void {
+    console.debug("Refreshing component", this);
+    this.needRefresh$.next(false);
   }
 }

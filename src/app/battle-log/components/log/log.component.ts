@@ -48,21 +48,22 @@ export class LogComponent implements OnInit {
         .filter((value) => value.length > 0);
       let i = 0;
       this.parseResult = [];
-      console.log(list);
+      console.debug("Log content", list);
       list.forEach((file) => {
         this.step = this.stepList[i++];
         this.step.items = [];
         // this.step.clear(); // TODO
-        console.log('file', i);
+        console.debug('Content', i);
         this.papa.parse(file, {
           skipEmptyLines: true,
           complete: (results, file) => {
             this.parseResult.push(results);
-            console.log('Result', results, file);
+            console.debug('Parsed content', results, file);
 
             const headers = results.data.shift();
             if (this.step.check(headers)) {
               results.data.forEach((line: any[]) => this.step.add(line));
+              this.step.refresh();
             } else {
               console.warn(
                 'Wrong headers.',
