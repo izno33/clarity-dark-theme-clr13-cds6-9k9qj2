@@ -64,6 +64,11 @@
     </clr-dg-column>
     <clr-dg-column>
       <ng-container *clrDgHideableColumn="{ hidden: false }">
+        ShieldMitigation
+      </ng-container>
+    </clr-dg-column>
+    <clr-dg-column>
+      <ng-container *clrDgHideableColumn="{ hidden: false }">
         MitigatedDamage
       </ng-container>
     </clr-dg-column>
@@ -74,7 +79,7 @@
     </clr-dg-column>
     <clr-dg-column>
       <ng-container *clrDgHideableColumn="{ hidden: false }">
-        ShieldMitigation
+        Mitigation
       </ng-container>
     </clr-dg-column>
     <clr-dg-column>
@@ -133,9 +138,10 @@
       </clr-dg-cell>
       <clr-dg-cell class="text-right">{{ (item.Type === "Attack") ? (item.HullDamage | number) : item.HullDamage }}</clr-dg-cell>
       <clr-dg-cell class="text-right">{{ (item.Type === "Attack") ? (item.ShieldDamage | number) :item.ShieldDamage }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.ShieldMitigation | percent:'1.0-2' }}</clr-dg-cell>
       <clr-dg-cell class="text-right">{{ (item.Type === "Attack") ? (item.MitigatedDamage | number) : item.MitigatedDamage }}</clr-dg-cell>
       <clr-dg-cell class="text-right">{{ (item.Type === "Attack") ? (item.TotalDamage | number) : item.TotalDamage }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ShieldMitigation | percent:'1.0-2' }}</clr-dg-cell>
+      <clr-dg-cell>{{ item.Mitigation | percent:'1.0-2' }}</clr-dg-cell>
       <clr-dg-cell>{{ item.AbilityType }}</clr-dg-cell>
       <clr-dg-cell>{{ item.AbilityValue }}</clr-dg-cell>
       <clr-dg-cell>{{ item.AbilityName }}</clr-dg-cell>
@@ -195,6 +201,7 @@
         <clr-dg-placeholder>We couldn't find any item!</clr-dg-placeholder>
         <clr-dg-column>Round</clr-dg-column>
         <clr-dg-column>Attacker</clr-dg-column>
+        <!--clr-dg-column [clrDgField]="AttackerName">Attacker</clr-dg-column-->
         <clr-dg-column>Hull damage</clr-dg-column>
         <clr-dg-column>Shield damage</clr-dg-column>
         <clr-dg-column>Mitigated damage</clr-dg-column>
