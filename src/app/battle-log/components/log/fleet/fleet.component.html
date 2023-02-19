@@ -33,32 +33,32 @@
 
     <clr-dg-row *clrDgItems="let item of fleet.items">
       <clr-dg-cell>{{ item.FleetType }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.Attack }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.Defense }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.Health }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.Attack | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.Defense | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.Health | number }}</clr-dg-cell>
       <clr-dg-cell>{{ item.ShipAbility }}</clr-dg-cell>
       <clr-dg-cell>{{ item.CaptainManeuver }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerOneAbility }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerTwoAbility }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerThreeAbility }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerAttackBonus | percent }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.DamagePerRound }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ArmourPierce }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ShieldPierce }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.Accuracy }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.DamagePerRound | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.ArmourPierce | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.ShieldPierce | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.Accuracy | number }}</clr-dg-cell>
       <clr-dg-cell>{{ item.CriticalChance | percent }}</clr-dg-cell>
       <clr-dg-cell>{{ item.CriticalDamage | percent }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerDefenseBonus | percent }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.Armour }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ShieldDeflection }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.Dodge }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.Armour | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.ShieldDeflection | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.Dodge | number }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerHealthBonus | percent }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ShieldHealth }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.HullHealth }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.ShieldHealth | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.HullHealth | number }}</clr-dg-cell>
       <clr-dg-cell>{{ item.ImpulseSpeed }}</clr-dg-cell>
       <clr-dg-cell>{{ item.WarpRange }}</clr-dg-cell>
       <clr-dg-cell>{{ item.WarpSpeed }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.CargoCapacity }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.CargoCapacity | number }}</clr-dg-cell>
       <clr-dg-cell>{{ item.ProtectedCargo }}</clr-dg-cell>
       <clr-dg-cell>{{ item.MiningBonus | percent }}</clr-dg-cell>
     </clr-dg-row>

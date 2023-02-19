@@ -24,15 +24,15 @@
       <clr-dg-cell>{{ item.Outcome }}</clr-dg-cell>
       <clr-dg-cell>{{ item.ShipName }}</clr-dg-cell>
       <clr-dg-cell>{{ item.ShipLevel }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ShipStrength }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ShipXP }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.ShipStrength | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.ShipXP | number }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerOne }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerTwo }}</clr-dg-cell>
       <clr-dg-cell>{{ item.OfficerThree }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.HullHealth }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.HullHealthRemaining }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ShieldHealth }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.ShieldHealthRemaining }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.HullHealth | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.HullHealthRemaining | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.ShieldHealth | number }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.ShieldHealthRemaining | number }}</clr-dg-cell>
       <clr-dg-cell>{{ item.Location }}</clr-dg-cell>
       <clr-dg-cell>{{ item.Timestamp }}</clr-dg-cell>
       <!-- <clr-dg-cell>{{ item.Timestamp | date }}</clr-dg-cell> -->

@@ -5,7 +5,7 @@
 
     <clr-dg-row *clrDgItems="let item of reward.items">
       <clr-dg-cell>{{ item.RewardName }}</clr-dg-cell>
-      <clr-dg-cell>{{ item.Count }}</clr-dg-cell>
+      <clr-dg-cell class="text-right">{{ item.Count | number }}</clr-dg-cell>
     </clr-dg-row>
 
     <clr-dg-footer>{{ reward.items.length }} lines</clr-dg-footer>
